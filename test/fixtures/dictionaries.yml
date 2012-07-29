@@ -1,0 +1,35 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  collection: MyString
+  column: MyString
+  conditional: MyString
+  keypart: MyString
+  alias: MyString
+  datatype: MyString
+  require: false
+  sm: MyString
+  default: MyString
+  conversion: MyString
+  validation: MyString
+  options: MyString
+  label: MyString
+  display: MyString
+  characteristics: MyString
+
+two:
+  collection: MyString
+  column: MyString
+  conditional: MyString
+  keypart: MyString
+  alias: MyString
+  datatype: MyString
+  require: false
+  sm: MyString
+  default: MyString
+  conversion: MyString
+  validation: MyString
+  options: MyString
+  label: MyString
+  display: MyString
+  characteristics: MyString
