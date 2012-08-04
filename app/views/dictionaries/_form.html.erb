@@ -12,8 +12,9 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :collection %><br />
-    <%= f.text_field :collection %>
+    <%= f.label :collectionname %><br />
+    <% @collection_names = Mongoid.default_session.collections.map(&:name).sort %>
+    <%= f.text_field :collectionname %>
   </div>
   <div class="field">
     <%= f.label :column %><br />

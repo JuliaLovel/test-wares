@@ -1,6 +1,7 @@
 class Dictionary 
   include Mongoid::Document
-
+  
+  field :collectionname, type: String
   field :column, type: String
   field :conditional, type: String
   field :keypart, type: String
