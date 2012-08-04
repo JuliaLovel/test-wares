@@ -1,0 +1,80 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Collection:</b>
+  <%= @schema.dataset %>
+</p>
+
+<p>
+  <b>Column:</b>
+  <%= @schema.column %>
+</p>
+
+<p>
+  <b>Conditional:</b>
+  <%= @schema.conditional %>
+</p>
+
+<p>
+  <b>Keypart:</b>
+  <%= @schema.keypart %>
+</p>
+
+<p>
+  <b>Alias:</b>
+  <%= @schema.alias %>
+</p>
+
+<p>
+  <b>Datatype:</b>
+  <%= @schema.datatype %>
+</p>
+
+<p>
+  <b>Require:</b>
+  <%= @schema.filltype %>
+</p>
+
+<p>
+  <b>Sm:</b>
+  <%= @schema.sm %>
+</p>
+
+<p>
+  <b>Default:</b>
+  <%= @schema.default %>
+</p>
+
+<p>
+  <b>Conversion:</b>
+  <%= @schema.conversion %>
+</p>
+
+<p>
+  <b>Validation:</b>
+  <%= @schema.validation %>
+</p>
+
+<p>
+  <b>Options:</b>
+  <%= @schema.options %>
+</p>
+
+<p>
+  <b>Label:</b>
+  <%= @schema.label %>
+</p>
+
+<p>
+  <b>Display:</b>
+  <%= @schema.display %>
+</p>
+
+<p>
+  <b>Characteristics:</b>
+  <%= @schema.characteristics %>
+</p>
+
+
+<%= link_to 'Edit', edit_schema_path(@schema) %> |
+<%= link_to 'Back', dictionaries_path %>

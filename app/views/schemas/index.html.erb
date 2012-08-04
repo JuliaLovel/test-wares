@@ -1,0 +1,51 @@
+<h1>Listing Schemae</h1>
+
+<table>
+  <tr>
+    <th>Data Set</th>
+    <th>Column</th>
+    <th>Conditional</th>
+    <th>Keypart</th>
+    <th>Alias</th>
+    <th>Datatype</th>
+    <th>Fill Type</th>
+    <th>Sm</th>
+    <th>Default</th>
+    <th>Conversion</th>
+    <th>Validation</th>
+    <th>Options</th>
+    <th>Label</th>
+    <th>Display</th>
+    <th>Characteristics</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @dictionaries.each do |schema| %>
+  <tr>
+    <td><%= schema.dataset %></td>
+    <td><%= schema.column %></td>
+    <td><%= schema.conditional %></td>
+    <td><%= schema.keypart %></td>
+    <td><%= schema.alias %></td>
+    <td><%= schema.datatype %></td>
+    <td><%= schema.filltype %></td>
+    <td><%= schema.sm %></td>
+    <td><%= schema.default %></td>
+    <td><%= schema.conversion %></td>
+    <td><%= schema.validation %></td>
+    <td><%= schema.options %></td>
+    <td><%= schema.label %></td>
+    <td><%= schema.display %></td>
+    <td><%= schema.characteristics %></td>
+    <td><%= link_to 'Show', schema %></td>
+    <td><%= link_to 'Edit', edit_schema_path(schema) %></td>
+    <td><%= link_to 'Destroy', schema, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New schema', new_schema_path %>

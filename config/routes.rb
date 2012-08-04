@@ -1,5 +1,5 @@
 WebWARES::Application.routes.draw do
-  resources :dictionaries
+  resources :schemas
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
