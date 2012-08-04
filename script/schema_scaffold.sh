@@ -2,8 +2,8 @@
 # Create dictionaries migration and scaffold 
 
 cd ~/Projects/test-wares
-rails g scaffold dictionary \
-collection:string \
+rails g scaffold schema \
+dataset:string \
 column:string \
 conditional:string \
 keypart: \
@@ -21,9 +21,9 @@ characteristics:
 rake db:migrate
 
  
-class Dictionary
+class Schema
 	include Mongoid::Document
-	field :k1, as: :collection, type: String
+	field :k1, as: :dataset, type: String
 	field :k2, as: :column, type: String
 	field :k3, as: :conditional, type: String, default: -> "^"
 	field :n01, as: :keypart
