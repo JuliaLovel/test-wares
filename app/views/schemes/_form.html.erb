@@ -1,0 +1,98 @@
+<div class="well">
+<%= form_for @scheme, :html => {:class => "form-horizontal"} do |f| %>
+  <% if @scheme.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@scheme.errors.count, "error") %> prohibited this scheme from being saved:</h2>
+
+      <ul>
+      <% @scheme.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="control-group">
+    <%= f.label :from_file_true, "Upload from JSON file", :class => "radio inline" do %>
+      <%= f.radio_button(:from_file, "true") %>
+      Upload from JSON file
+    <% end %>
+    <%= f.label :from_file_false, "Fill out form", :class => "radio inline" do %>
+      <%= f.radio_button :from_file, "false" %>
+      Fill out form
+    <% end %>
+  </div>
+  
+  <div class="control-group from_file_fields">
+    <%= f.label :json_scaffold, "JSON File:" %>
+    <%= f.file_field :json_scaffold %>
+  </div>
+
+  <div class="not_from_file_fields">
+	  <div class="control-group">
+		<%= f.label :dataset %><br />
+		<% @collection_names = Mongoid.default_session.collections.map(&:name).sort %>
+		<%= f.text_field :dataset %>
+	  </div>
+	  <div class="control-group">
+		<%= f.label :column %><br />
+		<%= f.text_field :column %>
+	  </div>
+	  <div class="control-group">
+		<%= f.label :conditional %><br />
+		<%= f.text_field :conditional %>
+	  </div>
+	  <div class="control-group">
+		<%= f.label :keypart %><br />
+		<%= f.text_field :keypart %>
+	  </div>
+	  <div class="control-group">
+		<%= f.label :alias %><br />
+		<%= f.text_field :alias %>
+	  </div>
+	  <div class="control-group">
+		<%= f.label :datatype %><br />
+		<%= f.text_field :datatype %>
+	  </div>
+	  <div class="control-group">
+		<%= f.label :filltype %><br />
+		<%= f.text_field :filltype %>
+	  </div>
+	  <div class="control-group">
+		<%= f.label :sm %><br />
+		<%= f.text_field :sm %>
+	  </div>
+	  <div class="control-group">
+		<%= f.label :default %><br />
+		<%= f.text_field :default %>
+	  </div>
+	  <div class="control-group">
+		<%= f.label :conversion %><br />
+		<%= f.text_field :conversion %>
+	  </div>
+	  <div class="control-group">
+		<%= f.label :validation %><br />
+		<%= f.text_field :validation %>
+	  </div>
+	  <div class="control-group">
+		<%= f.label :options %><br />
+		<%= f.text_field :options %>
+	  </div>
+	  <div class="control-group">
+		<%= f.label :label %><br />
+		<%= f.text_field :label %>
+	  </div>
+	  <div class="control-group">
+		<%= f.label :display %><br />
+		<%= f.text_field :display %>
+	  </div>
+	  <div class="control-group">
+		<%= f.label :characteristics %><br />
+		<%= f.text_field :characteristics %>
+	  </div>
+  </div>
+  <div class="actions">
+    <%= f.submit "Create Scheme", :class => "btn btn-primary" %>
+  </div>
+<% end %>
+</div>

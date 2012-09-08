@@ -1,5 +1,11 @@
-class Schema
+class Scheme
   include Mongoid::Document
+  include Mongoid::Paperclip
+  require 'json'
+  
+  has_mongoid_attached_file :json_scaffold
+  
+  #after_create :parse_json_scaffold
   
   field :n01, as: :dataset, type: String
   field :n02, as: :column, type: String
@@ -16,4 +22,13 @@ class Schema
   field :n13, as: :label, type: String
   field :n14, as: :display, type: String
   field :n15, as: :characteristics, type: String
+  field :n16, as: :from_file, type: Boolean
+  
+  def parse_json_scaffold
+    if self.from_file == true
+      @file = File.read(self.json_scaffold.path)
+      @json_scaffold = JSON.load(@file)
+      puts @json_scaffold.inspect
+    end
+  end
 end
