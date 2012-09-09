@@ -1,12 +1,7 @@
-class Scheme
+class SchemerColumn
   include Mongoid::Document
-  include Mongoid::Paperclip
-  require 'json'
-  
-  embeds_many :schemer_columns
-  has_mongoid_attached_file :json_scaffold
-  
-  #after_create :parse_json_scaffold
+ 
+  embedded_in :scheme
   
   field :n01, as: :dataset, type: String
   field :n02, as: :column, type: String
@@ -25,11 +20,4 @@ class Scheme
   field :n15, as: :characteristics, type: String
   field :n16, as: :from_file, type: Boolean
   
-  def parse_json_scaffold
-    if self.from_file == true
-      @file = File.read(self.json_scaffold.path)
-      @json_scaffold = JSON.load(@file)
-      puts @json_scaffold.inspect
-    end
-  end
 end

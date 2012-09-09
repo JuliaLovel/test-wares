@@ -1,2 +1,10 @@
-Use this README file to introduce your application and point to useful places in the API for learning more.
-Run "rake doc:app" to generate API documentation for your models, controllers, helpers, and libraries.
+How Schemer generates models:
+Schemer uses scheme records as a dictionary to generate scaffolds from. Schemes describe a
+model and all of its attributes.
+The following properties of a scheme (model) can be defined:
+  relationships - an array of other models that are related to the model, including the 
+  name of the related model and the relationship_type
+  columns - an array of each attribute of the model  
+To create a scheme record, go to schemes/new and either upload a JSON file or fill out the
+form. 
+If uploading a JSON file, use the syntax in the examples/address_scaffold.json.
