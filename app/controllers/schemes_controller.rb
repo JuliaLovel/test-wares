@@ -26,6 +26,7 @@ class SchemesController < ApplicationController
   # GET /schemes/new.json
   def new
     @scheme = Scheme.new
+    @scheme.schemer_columns.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -45,6 +46,13 @@ class SchemesController < ApplicationController
 
     respond_to do |format|
       if @scheme.save
+        if @scheme.from_file == true
+		  @file = File.read(@scheme.json_scaffold.path)
+		  @json_scaffold = JSON.parse(@file)
+		  puts @json_scaffold.inspect
+		  @scheme.collectionname = @json_scaffold["collectionname"]
+		  @scheme.save
+		end
         format.html { redirect_to @scheme, notice: 'Scheme was successfully created.' }
         format.json { render json: @scheme, status: :created, location: @scheme }
       else

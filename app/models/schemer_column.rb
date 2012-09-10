@@ -18,6 +18,5 @@ class SchemerColumn
   field :n13, as: :label, type: String
   field :n14, as: :display, type: String
   field :n15, as: :characteristics, type: String
-  field :n16, as: :from_file, type: Boolean
   
 end
