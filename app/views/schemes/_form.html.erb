@@ -15,7 +15,7 @@
   <div class="control-group">
     <%= f.label :from_file_true, "Upload from JSON file", :class => "radio inline" do %>
       <%= f.radio_button(:from_file, "true") %>
-      Upload from JSON file
+      Upload from file
     <% end %>
     <%= f.label :from_file_false, "Fill out form", :class => "radio inline" do %>
       <%= f.radio_button :from_file, "false" %>
@@ -24,72 +24,74 @@
   </div>
   
   <div class="control-group from_file_fields">
-    <%= f.label :json_scaffold, "JSON File:" %>
+    <%= f.label :json_scaffold, "Source File:" %>
     <%= f.file_field :json_scaffold %>
   </div>
 
   <div class="not_from_file_fields">
+    <%= f.fields_for @scheme.schemer_columns do |column_form| %>
 	  <div class="control-group">
-		<%= f.label :dataset %><br />
+		<%= column_form.label :dataset %><br />
 		<% @collection_names = Mongoid.default_session.collections.map(&:name).sort %>
-		<%= f.text_field :dataset %>
+		<%= column_form.text_field :dataset %>
 	  </div>
 	  <div class="control-group">
-		<%= f.label :column %><br />
-		<%= f.text_field :column %>
+		<%= column_form.label :column %><br />
+		<%= column_form.text_field :column %>
 	  </div>
 	  <div class="control-group">
-		<%= f.label :conditional %><br />
-		<%= f.text_field :conditional %>
+		<%= column_form.label :conditional %><br />
+		<%= column_form.text_field :conditional %>
 	  </div>
 	  <div class="control-group">
-		<%= f.label :keypart %><br />
-		<%= f.text_field :keypart %>
+		<%= column_form.label :keypart %><br />
+		<%= column_form.text_field :keypart %>
 	  </div>
 	  <div class="control-group">
-		<%= f.label :alias %><br />
-		<%= f.text_field :alias %>
+		<%= column_form.label :alias %><br />
+		<%= column_form.text_field :alias %>
 	  </div>
 	  <div class="control-group">
-		<%= f.label :datatype %><br />
-		<%= f.text_field :datatype %>
+		<%= column_form.label :datatype %><br />
+		<%= column_form.text_field :datatype %>
 	  </div>
 	  <div class="control-group">
-		<%= f.label :filltype %><br />
-		<%= f.text_field :filltype %>
+		<%= column_form.label :filltype %><br />
+		<%= column_form.text_field :filltype %>
 	  </div>
 	  <div class="control-group">
-		<%= f.label :sm %><br />
-		<%= f.text_field :sm %>
+		<%= column_form.label :sm %><br />
+		<%= column_form.text_field :sm %>
 	  </div>
 	  <div class="control-group">
-		<%= f.label :default %><br />
-		<%= f.text_field :default %>
+		<%= column_form.label :default %><br />
+		<%= column_form.text_field :default %>
 	  </div>
 	  <div class="control-group">
-		<%= f.label :conversion %><br />
-		<%= f.text_field :conversion %>
+		<%= column_form.label :conversion %><br />
+		<%= column_form.text_field :conversion %>
 	  </div>
 	  <div class="control-group">
-		<%= f.label :validation %><br />
-		<%= f.text_field :validation %>
+		<%= column_form.label :validation %><br />
+		<%= column_form.text_field :validation %>
 	  </div>
 	  <div class="control-group">
-		<%= f.label :options %><br />
-		<%= f.text_field :options %>
+		<%= column_form.label :options %><br />
+		<%= column_form.text_field :options %>
 	  </div>
 	  <div class="control-group">
-		<%= f.label :label %><br />
-		<%= f.text_field :label %>
+		<%= column_form.label :label %><br />
+		<%= column_form.text_field :label %>
 	  </div>
 	  <div class="control-group">
-		<%= f.label :display %><br />
-		<%= f.text_field :display %>
+		<%= column_form.label :display %><br />
+		<%= column_form.text_field :display %>
 	  </div>
 	  <div class="control-group">
-		<%= f.label :characteristics %><br />
-		<%= f.text_field :characteristics %>
+		<%= column_form.label :characteristics %><br />
+		<%= column_form.text_field :characteristics %>
 	  </div>
+	<% end %>
   </div>
   <div class="actions">
     <%= f.submit "Create Scheme", :class => "btn btn-primary" %>

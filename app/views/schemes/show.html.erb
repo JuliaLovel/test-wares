@@ -2,79 +2,80 @@
 
 <p>
   <b>Collection:</b>
-  <%= @scheme.dataset %>
+  <%= @scheme.collectionname %>
 </p>
 
-<p>
-  <b>Column:</b>
-  <%= @scheme.column %>
-</p>
-
-<p>
-  <b>Conditional:</b>
-  <%= @scheme.conditional %>
-</p>
-
-<p>
-  <b>Keypart:</b>
-  <%= @scheme.keypart %>
-</p>
-
-<p>
-  <b>Alias:</b>
-  <%= @scheme.alias %>
-</p>
-
-<p>
-  <b>Datatype:</b>
-  <%= @scheme.datatype %>
-</p>
-
-<p>
-  <b>Require:</b>
-  <%= @scheme.filltype %>
-</p>
-
-<p>
-  <b>Sm:</b>
-  <%= @scheme.sm %>
-</p>
-
-<p>
-  <b>Default:</b>
-  <%= @scheme.default %>
-</p>
-
-<p>
-  <b>Conversion:</b>
-  <%= @scheme.conversion %>
-</p>
-
-<p>
-  <b>Validation:</b>
-  <%= @scheme.validation %>
-</p>
-
-<p>
-  <b>Options:</b>
-  <%= @scheme.options %>
-</p>
-
-<p>
-  <b>Label:</b>
-  <%= @scheme.label %>
-</p>
-
-<p>
-  <b>Display:</b>
-  <%= @scheme.display %>
-</p>
-
-<p>
-  <b>Characteristics:</b>
-  <%= @scheme.characteristics %>
-</p>
-
+<% @scheme.schemer_columns.each do |sc| %>
+	<p>
+	  <b>Column:</b>
+	  <%= sc.column %>
+	</p>
+	
+	<p>
+	  <b>Conditional:</b>
+	  <%= sc.conditional %>
+	</p>
+	
+	<p>
+	  <b>Keypart:</b>
+	  <%= sc.keypart %>
+	</p>
+	
+	<p>
+	  <b>Alias:</b>
+	  <%= sc.alias %>
+	</p>
+	
+	<p>
+	  <b>Datatype:</b>
+	  <%= sc.datatype %>
+	</p>
+	
+	<p>
+	  <b>Require:</b>
+	  <%= sc.filltype %>
+	</p>
+	
+	<p>
+	  <b>Sm:</b>
+	  <%= sc.sm %>
+	</p>
+	
+	<p>
+	  <b>Default:</b>
+	  <%= sc.default %>
+	</p>
+	
+	<p>
+	  <b>Conversion:</b>
+	  <%= sc.conversion %>
+	</p>
+	
+	<p>
+	  <b>Validation:</b>
+	  <%= sc.validation %>
+	</p>
+	
+	<p>
+	  <b>Options:</b>
+	  <%= sc.options %>
+	</p>
+	
+	<p>
+	  <b>Label:</b>
+	  <%= sc.label %>
+	</p>
+	
+	<p>
+	  <b>Display:</b>
+	  <%= sc.display %>
+	</p>
+	
+	<p>
+	  <b>Characteristics:</b>
+	  <%= sc.characteristics %>
+	</p>
+<% end %>
 
 <%= link_to 'Edit', edit_scheme_path(@scheme) %> |
 <%= link_to 'New', new_scheme_path %>
