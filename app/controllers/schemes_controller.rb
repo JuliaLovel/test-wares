@@ -47,11 +47,22 @@ class SchemesController < ApplicationController
     respond_to do |format|
       if @scheme.save
         if @scheme.from_file == true
-		  @file = File.read(@scheme.json_scaffold.path)
-		  @json_scaffold = JSON.parse(@file)
-		  puts @json_scaffold.inspect
-		  @scheme.collectionname = @json_scaffold["collectionname"]
-		  @scheme.save
+          if @scheme.json_scaffold.content_type == "application/octet-stream"
+			@file = File.read(@scheme.json_scaffold.path)
+			@json_scaffold = JSON.parse(@file)
+			puts @json_scaffold.inspect
+			@scheme.collectionname = @json_scaffold["collectionname"]
+			@json_scaffold["columns"].each do |col|
+			  puts col.to_hash.with_indifferent_access
+			  begin
+			    @scheme.schemer_columns.create!(col.to_hash.symbolize_keys)
+			  rescue Exception => e
+				puts e.to_s
+			  end
+			end
+			@scheme.save
+		  else
+		  end
 		end
         format.html { redirect_to @scheme, notice: 'Scheme was successfully created.' }
         format.json { render json: @scheme, status: :created, location: @scheme }
