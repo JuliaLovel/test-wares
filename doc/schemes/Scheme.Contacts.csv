@@ -1,0 +1,6 @@
+dataset,colname,formname,conditional,colalias,keypart,datatype,displaytype,smer,fill,options,validation,conversion,label,justlen,characteristics
+schemer,k1,,,type,1,string,textfield,s,,,,,,,
+schemer,k2,,,contact,2,string,textfield,s,,,,,,,
+schemer,n01,,,email,,string,textfield,s,,,,,,,
+schemer,n02,,,phone,,string,textfield,s,,,,,,,
+schemer,n03,,,address,,string,textfield,r,,,,,,,
