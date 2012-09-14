@@ -22,6 +22,15 @@ class SchemerScaffoldGenerator < Rails::Generators::Base
 end"
       end
       
+      #The Routes
+      @routes_file = "config/routes.rb"
+      @resources_name = scheme.collectionname.pluralize.downcase
+      if File.exists?(@routes_file)
+        insert_into_file @routes_file, :after => "Application.routes.draw do \n" do
+          "  resources :#{@resources_name}"
+        end
+      end
+      
       #The Views
       #Index View
       @index_view = "app/views/#{@model}/index.html.erb"

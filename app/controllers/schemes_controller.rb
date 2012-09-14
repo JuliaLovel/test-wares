@@ -1,7 +1,7 @@
 class SchemesController < ApplicationController
+
+ require 'csv'
   
-  # GET /schemes
-  # GET /schemes.json
   def index
     @schemes = Scheme.all
 
@@ -47,6 +47,7 @@ class SchemesController < ApplicationController
     respond_to do |format|
       if @scheme.save
         if @scheme.from_file == true
+          #TODO: Get this working right depending on file extension
           if @scheme.json_scaffold.content_type == "application/octet-stream"
 			@file = File.read(@scheme.json_scaffold.path)
 			@json_scaffold = JSON.parse(@file)
@@ -61,7 +62,29 @@ class SchemesController < ApplicationController
 			  end
 			end
 			@scheme.save
+		  elsif @scheme.json_scaffold.content_type == "text/csv"
+		    @file = File.read(@scheme.json_scaffold.path)
+		    begin
+		      csv = CSV.parse(@file, :headers => true)
+		    rescue Exception => e
+		      puts e.to_s
+		    end
+		    unless csv.nil?
+			  csv.each do |row|
+			    row = row.to_hash.with_indifferent_access
+			    @row_hash = row.to_hash.symbolize_keys
+			    puts @row_hash
+			    @scheme.collectionname = @row_hash["dataset"]
+			    begin
+				  @scheme.schemer_columns.create!(row.to_hash.symbolize_keys)
+			    rescue Exception => e
+				  puts e.to_s
+			    end
+			  end
+		    end
+		    @scheme.save
 		  else
+		  #TODO: Txt/CSV, XML
 		  end
 		end
         format.html { redirect_to @scheme, notice: 'Scheme was successfully created.' }
